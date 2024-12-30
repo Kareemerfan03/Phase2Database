@@ -1,0 +1,71 @@
+/* General styles */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+.profile-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Image Section */
+.profile-image-container {
+    padding: 20px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image-container h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Profile Details Section */
+.card-body {
+    padding: 30px;
+}
+
+.card-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.row {
+    margin-bottom: 15px;
+}
+
+.row div:first-child {
+    font-weight: bold;
+    color: #6c757d;
+}
+
+.row div:last-child {
+    font-size: 1.1rem;
+    color: #495057;
+}
+
+/* Edit Button */
+.btn-edit {
+    background-color: #007bff;
+    border: none;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.btn-edit:hover {
+    background-color: #0056b3;
+    cursor: pointer;
+}

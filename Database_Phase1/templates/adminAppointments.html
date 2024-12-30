@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Appointments</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .btn-success {
+            background-color: green;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-danger {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .welcome-message {
+            font-size: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="welcome-message">Good afternoon admin!</h1>
+        <div class="card mt-4">
+            <div class="card-body">
+                <form action="/filter_appointments" method="POST">
+                </form>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h3 class="card-title">Pending Appointments</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Surgery Type</th>
+                            <th>Appointment Date</th>
+                            <th>Appointment Time</th>
+                            <th>Concerns</th>
+                            <th>Assigned Doctor</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for appointment in appointments %}
+                        <tr>
+                            <td>{{ appointment[0] }}</td>
+                            <td>{{ appointment[1] }}</td>
+                            <td>{{ appointment[2] }}</td>
+                            <td>{{ appointment[3] }}</td>
+                            <td>{{ appointment[4] }}</td>
+                            <td>{{ appointment[5] }}</td>
+                            <td>{{ appointment[6] }}</td>
+                            <td>{{ appointment[7] }}</td>
+                            <td>
+                                <form action="/approve_appointment" method="POST" style="display:inline;">
+                                    <input type="hidden" name="fullname" value="{{ appointment[0] }}">
+                                    <input type="hidden" name="email" value="{{ appointment[1] }}">
+                                    <input type="hidden" name="phonenumber" value="{{ appointment[2] }}">
+                                    <input type="hidden" name="surgerytype" value="{{ appointment[3] }}">
+                                    <input type="hidden" name="appointmentdate" value="{{ appointment[4] }}">
+                                    <input type="hidden" name="appointmenttime" value="{{ appointment[5] }}">
+                                    <button type="submit" class="btn-success">Approve</button>
+                                </form>
+                                <form action="/deny_appointment" method="POST" style="display:inline;">
+                                    <input type="hidden" name="fullname" value="{{ appointment[0] }}">
+                                    <input type="hidden" name="email" value="{{ appointment[1] }}">
+                                    <input type="hidden" name="phonenumber" value="{{ appointment[2] }}">
+                                    <input type="hidden" name="surgerytype" value="{{ appointment[3] }}">
+                                    <input type="hidden" name="appointmentdate" value="{{ appointment[4] }}">
+                                    <input type="hidden" name="appointmenttime" value="{{ appointment[5] }}">
+                                    <button type="submit" class="btn-danger">Deny</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
